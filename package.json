@@ -1,0 +1,28 @@
+{
+  "name": "@ikseong/planning-pack",
+  "version": "0.1.0",
+  "description": "Installable planning template pack for Codex and Claude with local/global scopes.",
+  "type": "module",
+  "bin": {
+    "planning-pack": "bin/planning-pack.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "INSTALL.md",
+    "template-pack/planning/PACKAGE-README.md",
+    "template-pack/planning/export-manifest.json",
+    "template-pack/planning/skills",
+    "template-pack/planning/agents",
+    "template-pack/planning/references",
+    "template-pack/planning/templates",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

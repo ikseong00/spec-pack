@@ -1,0 +1,14 @@
+{
+  "sharedDirName": "planning-pack",
+  "defaultPrefix": "planning",
+  "packageReadme": "PACKAGE-README.md",
+  "sharedDirectories": [
+    "references",
+    "templates"
+  ],
+  "sharedFiles": [
+    "agents/AGENTS.md"
+  ],
+  "skillsDirectory": "skills",
+  "agentsDirectory": "agents"
+}
