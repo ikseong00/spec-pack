@@ -1,6 +1,6 @@
 {
-  "name": "@ikseong/spec-pack",
-  "version": "0.1.0",
+  "name": "@ikseongjo/spec-pack",
+  "version": "0.1.1",
   "description": "Installable service-spec pack for Codex and Claude with local/global scopes.",
   "type": "module",
   "bin": {

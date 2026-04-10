@@ -2,7 +2,7 @@
 
 이 문서는 `spec-pack` CLI를 어떻게 설치하고 사용하는지 따로 정리한 문서다.
 
-현재 package name은 `@ikseong/spec-pack`이다.
+현재 package name은 `@ikseongjo/spec-pack`이다.
 호환용 alias로 `planning-pack` command도 함께 제공한다.
 
 현재 default shipping boundary는 `prebuild`다.
@@ -23,7 +23,7 @@ host-aware install 방향은 [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desk
 ### 전역 설치
 
 ```bash
-npm install -g @ikseong/spec-pack
+npm install -g @ikseongjo/spec-pack
 ```
 
 설치 후:
@@ -35,7 +35,7 @@ spec-pack help
 ### 1회성 실행
 
 ```bash
-npx @ikseong/spec-pack install --host codex --scope local
+npx @ikseongjo/spec-pack install --host codex --scope local
 ```
 
 ## 3. 기본 명령

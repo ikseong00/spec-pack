@@ -16,7 +16,7 @@
 현재 release unit은 아래 두 가지다.
 
 - npm package:
-  - `@ikseong/spec-pack`
+  - `@ikseongjo/spec-pack`
 - git release:
   - tag `vX.Y.Z`
 
