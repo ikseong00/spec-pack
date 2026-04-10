@@ -2,6 +2,9 @@
 
 이 문서는 우리 팀 기준으로 `무엇이 작업용 원본이고`, `무엇이 실제 배포물인지`를 고정하는 내부 문서다.
 
+세부 버전 정책, candidate/stable 승급 기준, tag/npm/GitHub release 순서는 [RELEASE-STRATEGY.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-STRATEGY.md)를 따른다.
+매 release마다 실제 scope를 정하고 실행할 때는 [RELEASE-CHECKLIST.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-CHECKLIST.md)를 사용한다.
+
 ## 1. 핵심 결정
 
 - `spec-pack/`은 internal authoring workspace다
@@ -126,6 +129,7 @@ validated internal candidate 범위:
 - host별 local/global install 경로가 고정됐는가
 - package name / version policy가 정해졌는가
 - public CLI name과 compatibility alias가 문서에 일관되게 반영되었는가
+- detailed release gate와 version bump rule이 `RELEASE-STRATEGY.md`와 모순 없이 유지되는가
 
 ## 9. 다음 할 일
 
