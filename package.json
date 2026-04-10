@@ -10,6 +10,8 @@
     "planning-pack": "bin/planning-pack.mjs"
   },
   "files": [
+    "INSTALL.en.md",
+    "README.en.md",
     "bin",
     "src",
     "INSTALL.md",

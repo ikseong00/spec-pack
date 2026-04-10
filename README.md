@@ -1,5 +1,9 @@
 # Make Product Spec
 
+- 한국어: `README.md`
+- English: [README.en.md](README.en.md)
+- Install guide: [INSTALL.md](INSTALL.md) · [INSTALL.en.md](INSTALL.en.md)
+
 `make-product-spec`은 아이디어를 개발자가 구현 판단할 수 있는 수준의 문서로 만들기 위한 host-aware installer CLI다. 설치하면 `.codex/product-spec` 또는 `.claude/product-spec` 아래에 planning, design, rough architecture authoring surface가 정리된다.
 
 내부 canonical source는 [product-spec/](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec) 아래에 있고, 배포 기준은 [RELEASE-PLAN.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-PLAN.md)에 정리했다. 실제 shipping boundary는 [SHIPPING-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/SHIPPING-SURFACE.md), host-aware install 규칙은 [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/HOST-AWARE-INSTALL-SURFACE.md), pack 상태는 [PACK-REGISTRY.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/PACK-REGISTRY.md)에 있다.
