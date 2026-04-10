@@ -12,20 +12,30 @@ function makeTempProject() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'planning-pack-test-'));
 }
 
-test('spec-pack CLI help is the public default and planning-pack remains an alias', () => {
-  const specHelp = execFileSync(process.execPath, ['bin/spec-pack.mjs', 'help'], {
+test('make-product-spec CLI help is the public default and dev-spec/spec-pack/planning-pack remain aliases', () => {
+  const primaryHelp = execFileSync(process.execPath, ['bin/make-product-spec.mjs', 'help'], {
     cwd: process.cwd(),
     encoding: 'utf8'
   });
-  const aliasHelp = execFileSync(process.execPath, ['bin/planning-pack.mjs', 'help'], {
+  const devSpecHelp = execFileSync(process.execPath, ['bin/dev-spec.mjs', 'help'], {
+    cwd: process.cwd(),
+    encoding: 'utf8'
+  });
+  const specPackHelp = execFileSync(process.execPath, ['bin/spec-pack.mjs', 'help'], {
+    cwd: process.cwd(),
+    encoding: 'utf8'
+  });
+  const planningPackHelp = execFileSync(process.execPath, ['bin/planning-pack.mjs', 'help'], {
     cwd: process.cwd(),
     encoding: 'utf8'
   });
 
-  assert.match(specHelp, /@ikseong\/spec-pack v0\.1\.0/);
-  assert.match(specHelp, /spec-pack install --host <codex\|claude>/);
-  assert.match(specHelp, /compatibility alias: planning-pack/);
-  assert.match(aliasHelp, /spec-pack install --host <codex\|claude>/);
+  assert.match(primaryHelp, /@ikseongjo\/make-product-spec v0\.1\.1/);
+  assert.match(primaryHelp, /make-product-spec install --host <codex\|claude>/);
+  assert.match(primaryHelp, /compatibility aliases: dev-spec, spec-pack, planning-pack/);
+  assert.match(devSpecHelp, /make-product-spec install --host <codex\|claude>/);
+  assert.match(specPackHelp, /make-product-spec install --host <codex\|claude>/);
+  assert.match(planningPackHelp, /make-product-spec install --host <codex\|claude>/);
 });
 
 test('explicit planning codex local install rewrites skill and agent links', () => {
@@ -137,7 +147,7 @@ test('prebuild codex dry run reports unified pack metadata', () => {
 
   assert.equal(result.status, 'dry-run');
   assert.equal(result.summary.pack, 'prebuild');
-  assert.equal(result.summary.packScope, 'spec-unified');
+  assert.equal(result.summary.packScope, 'product-spec-unified');
   assert.equal(result.summary.skillCount, 19);
   assert.equal(result.summary.agentCount, 15);
 });
@@ -170,18 +180,18 @@ test('prebuild codex local install rewrites shared, stage, and overlay links', (
 
   assert.equal(result.status, 'installed');
 
-  const sharedReadmePath = path.join(projectRoot, '.codex', 'spec-pack', 'README.md');
+  const sharedReadmePath = path.join(projectRoot, '.codex', 'product-spec', 'README.md');
   const planningReadmePath = path.join(
     projectRoot,
     '.codex',
-    'spec-pack',
+    'product-spec',
     'planning',
     'README.md'
   );
   const designStartPath = path.join(
     projectRoot,
     '.codex',
-    'spec-pack',
+    'product-spec',
     'design',
     'references',
     'START-HERE.md'
@@ -190,58 +200,58 @@ test('prebuild codex local install rewrites shared, stage, and overlay links', (
     projectRoot,
     '.codex',
     'skills',
-    'spec-planning-synthesis',
+    'product-spec-planning-synthesis',
     'SKILL.md'
   );
   const designSkillPath = path.join(
     projectRoot,
     '.codex',
     'skills',
-    'spec-design-synthesis',
+    'product-spec-design-synthesis',
     'SKILL.md'
   );
   const overlaySkillPath = path.join(
     projectRoot,
     '.codex',
     'skills',
-    'spec-codex-entry',
+    'product-spec-codex-entry',
     'SKILL.md'
   );
   const designAuditorPath = path.join(
     projectRoot,
     '.codex',
     'agents',
-    'spec-design-pack-auditor.md'
+    'product-spec-design-pack-auditor.md'
   );
   const complianceAuditorPath = path.join(
     projectRoot,
     '.codex',
     'agents',
-    'spec-compliance-auditor.md'
+    'product-spec-compliance-auditor.md'
   );
   const prebuildRunnerPath = path.join(
     projectRoot,
     '.codex',
     'agents',
-    'spec-scenario-runner.md'
+    'product-spec-scenario-runner.md'
   );
   const overlayAgentPath = path.join(
     projectRoot,
     '.codex',
     'agents',
-    'spec-codex-loop-operator.md'
+    'product-spec-codex-loop-operator.md'
   );
   const prebuildScenarioMatrixPath = path.join(
     projectRoot,
     '.codex',
-    'spec-pack',
+    'product-spec',
     'references',
     'PREBUILD-SCENARIO-MATRIX-50.md'
   );
   const prebuildLoopMemoryPath = path.join(
     projectRoot,
     '.codex',
-    'spec-pack',
+    'product-spec',
     'references',
     'PREBUILD-LOOP-MEMORY.md'
   );
@@ -266,19 +276,19 @@ test('prebuild codex local install rewrites shared, stage, and overlay links', (
 
   assert.match(
     planningSkillContent,
-    /\.\.\/\.\.\/spec-pack\/planning\/references\/PLANNING-DONE-CRITERIA\.md/
+    /\.\.\/\.\.\/product-spec\/planning\/references\/PLANNING-DONE-CRITERIA\.md/
   );
   assert.match(
     designSkillContent,
-    /\.\.\/\.\.\/spec-pack\/design\/references\/DESIGN-DONE-CRITERIA\.md/
+    /\.\.\/\.\.\/product-spec\/design\/references\/DESIGN-DONE-CRITERIA\.md/
   );
   assert.match(
     overlaySkillContent,
-    /\.\.\/\.\.\/spec-pack\/references\/START-HERE\.md/
+    /\.\.\/\.\.\/product-spec\/references\/START-HERE\.md/
   );
   assert.match(
     overlaySkillContent,
-    /\.\.\/\.\.\/spec-pack\/hosts\/codex\/README\.md/
+    /\.\.\/\.\.\/product-spec\/hosts\/codex\/README\.md/
   );
   assert.match(
     complianceAuditorContent,
@@ -302,8 +312,8 @@ test('doctor reports installed default prebuild codex local pack', () => {
 
   assert.equal(result.status, 'ok');
   assert.equal(result.pack, 'prebuild');
-  assert.equal(result.prefix, 'spec');
-  assert.equal(result.packScope, 'spec-unified');
+  assert.equal(result.prefix, 'product-spec');
+  assert.equal(result.packScope, 'product-spec-unified');
   assert.equal(result.missingPaths.length, 0);
 });
 
@@ -325,7 +335,7 @@ test('doctor reports installed prebuild codex local pack', () => {
 
   assert.equal(result.status, 'ok');
   assert.equal(result.pack, 'prebuild');
-  assert.equal(result.packScope, 'spec-unified');
+  assert.equal(result.packScope, 'product-spec-unified');
   assert.equal(result.missingPaths.length, 0);
 });
 
@@ -351,7 +361,7 @@ test('planning and prebuild can coexist in the same codex local scope', () => {
     true
   );
   assert.equal(
-    fs.existsSync(path.join(projectRoot, '.codex', 'skills', 'spec-idea-discovery', 'SKILL.md')),
+    fs.existsSync(path.join(projectRoot, '.codex', 'skills', 'product-spec-idea-discovery', 'SKILL.md')),
     true
   );
   assert.equal(
@@ -359,7 +369,7 @@ test('planning and prebuild can coexist in the same codex local scope', () => {
     true
   );
   assert.equal(
-    fs.existsSync(path.join(projectRoot, '.codex', 'spec-pack', 'install-manifest.json')),
+    fs.existsSync(path.join(projectRoot, '.codex', 'product-spec', 'install-manifest.json')),
     true
   );
 });
@@ -380,11 +390,11 @@ test('default uninstall removes managed codex local prebuild pack', () => {
 
   assert.equal(result.status, 'removed');
   assert.equal(
-    fs.existsSync(path.join(projectRoot, '.codex', 'spec-pack', 'install-manifest.json')),
+    fs.existsSync(path.join(projectRoot, '.codex', 'product-spec', 'install-manifest.json')),
     false
   );
   assert.equal(
-    fs.existsSync(path.join(projectRoot, '.codex', 'skills', 'spec-idea-discovery')),
+    fs.existsSync(path.join(projectRoot, '.codex', 'skills', 'product-spec-idea-discovery')),
     false
   );
 });

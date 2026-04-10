@@ -1,13 +1,12 @@
-# Prebuild Pack Install Guide
+# Make Product Spec Install Guide
 
-이 문서는 `spec-pack` CLI를 어떻게 설치하고 사용하는지 따로 정리한 문서다.
+이 문서는 `make-product-spec` CLI 설치와 사용법을 정리한 문서다.
 
-현재 package name은 `@ikseongjo/spec-pack`이다.
-호환용 alias로 `planning-pack` command도 함께 제공한다.
-
-현재 default shipping boundary는 `prebuild`다.
-즉 사용자는 별도 pack 선택 없이 `planning + design + rough architecture`를 묶은 unified surface를 설치하게 된다.
-host-aware install 방향은 [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/spec-pack/HOST-AWARE-INSTALL-SURFACE.md)에 따로 정리했다.
+- package name: `@ikseongjo/make-product-spec`
+- primary CLI: `make-product-spec`
+- compatibility alias: `dev-spec`, `spec-pack`, `planning-pack`
+- default shipping boundary: `prebuild`
+- host-aware install 기준: [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/HOST-AWARE-INSTALL-SURFACE.md)
 
 ## 1. 지원 대상
 
@@ -23,19 +22,19 @@ host-aware install 방향은 [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desk
 ### 전역 설치
 
 ```bash
-npm install -g @ikseongjo/spec-pack
+npm install -g @ikseongjo/make-product-spec
 ```
 
 설치 후:
 
 ```bash
-spec-pack help
+make-product-spec help
 ```
 
 ### 1회성 실행
 
 ```bash
-npx @ikseongjo/spec-pack install --host codex --scope local
+npx @ikseongjo/make-product-spec install --host codex --scope local
 ```
 
 ## 3. 기본 명령
@@ -43,15 +42,15 @@ npx @ikseongjo/spec-pack install --host codex --scope local
 ### Codex local install
 
 ```bash
-spec-pack install --host codex --scope local
+make-product-spec install --host codex --scope local
 ```
 
-현재 프로젝트의 `.codex/` 아래에 unified `spec-pack`을 설치한다.
+현재 프로젝트의 `.codex/` 아래에 unified `product-spec`을 설치한다.
 
 ### Codex global install
 
 ```bash
-spec-pack install --host codex --scope global
+make-product-spec install --host codex --scope global
 ```
 
 `~/.codex/` 아래에 설치한다.
@@ -59,15 +58,15 @@ spec-pack install --host codex --scope global
 ### Claude local install
 
 ```bash
-spec-pack install --host claude --scope local
+make-product-spec install --host claude --scope local
 ```
 
-현재 프로젝트의 `.claude/` 아래에 unified `spec-pack`을 설치한다.
+현재 프로젝트의 `.claude/` 아래에 unified `product-spec`을 설치한다.
 
 ### Claude global install
 
 ```bash
-spec-pack install --host claude --scope global
+make-product-spec install --host claude --scope global
 ```
 
 `~/.claude/` 아래에 설치한다.
@@ -76,66 +75,54 @@ spec-pack install --host claude --scope global
 
 ### dry-run
 
-실제 파일을 쓰지 않고 설치 계획만 본다.
-
 ```bash
-spec-pack install --host codex --scope local --dry-run
+make-product-spec install --host codex --scope local --dry-run
 ```
 
 ### doctor
 
-설치 상태와 누락 파일을 확인한다.
-
 ```bash
-spec-pack doctor --host codex --scope local
+make-product-spec doctor --host codex --scope local
 ```
 
 ### uninstall
 
-이 CLI가 관리한 설치본만 제거한다.
-
 ```bash
-spec-pack uninstall --host codex --scope local
+make-product-spec uninstall --host codex --scope local
 ```
 
 ## 5. 선택 옵션
 
 ### project root 지정
 
-현재 디렉터리 대신 다른 프로젝트 경로에 local install 한다.
-
 ```bash
-spec-pack install --host codex --scope local --project-root /path/to/project
+make-product-spec install --host codex --scope local --project-root /path/to/project
 ```
 
 ### prefix 변경
 
-기본 prefix는 `planning`이 아니라 pack별 기본값을 따른다.
+기본 prefix는 pack별 기본값을 따른다.
 
 - `prebuild` 기본 prefix:
-  - `spec`
+  - `product-spec`
 - `planning` 기본 prefix:
   - `planning`
 
 예:
 
 ```bash
-spec-pack install --host codex --scope local --prefix pp
+make-product-spec install --host codex --scope local --prefix pp --pack planning
 ```
-
-이 경우 skill / agent 이름은 `pp-*` 형태로 설치된다.
 
 주의:
 
 - `--pack prebuild`는 현재 custom `--prefix`를 지원하지 않는다
-- prebuild는 기본 prefix `spec`을 사용한다
+- prebuild는 기본 prefix `product-spec`을 사용한다
 
 ### force 재설치
 
-기존 설치를 덮어쓴다.
-
 ```bash
-spec-pack install --host codex --scope local --force
+make-product-spec install --host codex --scope local --force
 ```
 
 ### pack 지정
@@ -143,11 +130,8 @@ spec-pack install --host codex --scope local --force
 현재 install 가능한 pack은 `prebuild`, `planning`이다.
 
 ```bash
-spec-pack install --host codex --scope local --pack prebuild
-```
-
-```bash
-spec-pack install --host codex --scope local --pack planning
+make-product-spec install --host codex --scope local --pack prebuild
+make-product-spec install --host codex --scope local --pack planning
 ```
 
 ## 6. 설치 결과
@@ -158,20 +142,20 @@ local 예시:
 
 ```text
 <project>/.codex/
-  spec-pack/
-  skills/spec-*/
-  skills/spec-codex-*/
-  agents/spec-*.md
+  product-spec/
+  skills/product-spec-*/
+  skills/product-spec-codex-*/
+  agents/product-spec-*.md
 ```
 
 global 예시:
 
 ```text
 ~/.codex/
-  spec-pack/
-  skills/spec-*/
-  skills/spec-codex-*/
-  agents/spec-*.md
+  product-spec/
+  skills/product-spec-*/
+  skills/product-spec-codex-*/
+  agents/product-spec-*.md
 ```
 
 ### Claude
@@ -180,20 +164,20 @@ local 예시:
 
 ```text
 <project>/.claude/
-  spec-pack/
-  skills/spec-*/
-  skills/spec-claude-*/
-  agents/spec-*.md
+  product-spec/
+  skills/product-spec-*/
+  skills/product-spec-claude-*/
+  agents/product-spec-*.md
 ```
 
 global 예시:
 
 ```text
 ~/.claude/
-  spec-pack/
-  skills/spec-*/
-  skills/spec-claude-*/
-  agents/spec-*.md
+  product-spec/
+  skills/product-spec-*/
+  skills/product-spec-claude-*/
+  agents/product-spec-*.md
 ```
 
 ### Minimal planning path 예시
@@ -234,19 +218,17 @@ Claude local:
 - internal review reports
 - internal authored bundles
 
-현재 기본 설치는 `prebuild`다.
-`prebuild`는 host에 따라 같은 shared bundle을 설치하되, host overlay entry skill만 함께 설치한다.
-`planning`은 더 작은 호환용 설치 경로다.
+현재 기본 설치는 `prebuild`다. `prebuild`는 host에 따라 같은 shared bundle을 설치하되, host overlay entry skill만 함께 설치한다. `planning`은 더 작은 compatibility path다.
 
 ## 8. 첫 진입 순서
 
 설치 후 기본적으로는 이 순서로 읽는다.
 
-1. `spec-pack/README.md`
-2. `spec-pack/references/START-HERE.md`
-3. `spec-pack/planning/references/START-HERE.md`
-4. `spec-pack/design/references/START-HERE.md`
-5. `spec-pack/architecture/references/START-HERE.md`
+1. `product-spec/README.md`
+2. `product-spec/references/START-HERE.md`
+3. `product-spec/planning/references/START-HERE.md`
+4. `product-spec/design/references/START-HERE.md`
+5. `product-spec/architecture/references/START-HERE.md`
 
 `--pack planning`이면 아래 순서로 읽는다.
 
@@ -258,11 +240,10 @@ Claude local:
 
 ## 9. 주의
 
-- 현재 문서는 설치 방법 기록용이다
-- `--pack prebuild`가 기본 설치 surface다
-- `--pack planning`은 호환용 minimal path다
-- host별 실제 실사용 검증은 별도로 더 진행할 수 있다
-- compatibility alias `planning-pack`은 남아 있지만, 공개 문서와 기본 명령은 `spec-pack`을 기준으로 한다
+- 공개 문서와 기본 명령은 `make-product-spec` 기준이다.
+- `dev-spec`, `spec-pack`, `planning-pack`은 compatibility alias로만 남긴다.
+- `--pack prebuild`가 기본 설치 surface다.
+- host별 실제 실사용 검증은 별도로 더 진행할 수 있다.
 
 ## 10. Codex App + CLI Local Support
 
@@ -279,15 +260,9 @@ Claude local:
 codex
 ```
 
-권장:
-
-- root `AGENTS.md`는 project-wide guidance로 둔다
-- `.codex/config.toml`은 project-local baseline으로 둔다
-- model/provider는 repo-local로 강제하지 않는다
-- multi-agent role은 project-local `.codex/agents/`에 둔다
-
 현재 sample roles:
 
 - `explorer`
 - `reviewer`
 - `docs_researcher`
+

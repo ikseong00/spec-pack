@@ -1,8 +1,8 @@
 # Release Strategy
 
-이 문서는 `spec-pack`을 어떤 기준으로 버전 올리고, 어떤 채널로 배포하고, 어떤 조건을 만족해야 stable로 승급하는지 고정하는 내부 운영 문서다.
+이 문서는 `make-product-spec`을 어떤 기준으로 버전 올리고, 어떤 채널로 배포하고, 어떤 조건을 만족해야 stable로 승급하는지 고정하는 내부 운영 문서다.
 
-매 release마다 실제로 무엇을 포함할지 정하고 실행 순서를 따라가는 체크리스트는 [RELEASE-CHECKLIST.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-CHECKLIST.md)를 사용한다.
+매 release마다 실제로 무엇을 포함할지 정하고 실행 순서를 따라가는 체크리스트는 [RELEASE-CHECKLIST.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-CHECKLIST.md)를 사용한다.
 
 ## 1. 목표
 
@@ -16,20 +16,23 @@
 현재 release unit은 아래 두 가지다.
 
 - npm package:
-  - `@ikseongjo/spec-pack`
+  - `@ikseongjo/make-product-spec`
 - git release:
   - tag `vX.Y.Z`
 
 실제 사용자 surface는 아래 둘로 본다.
 
 - CLI:
-  - `spec-pack`
+  - `make-product-spec`
 - install result:
-  - `.codex/spec-pack/...`
-  - `.claude/spec-pack/...`
+  - `.codex/product-spec/...`
+  - `.claude/product-spec/...`
 
 compatibility alias는 유지하지만 primary surface는 아래 하나다.
 
+- `spec-pack`
+  - 호환 alias
+  - primary brand 아님
 - `planning-pack`
   - 호환 alias
   - primary brand 아님
@@ -119,8 +122,8 @@ release는 아래 4개 gate를 모두 통과해야 한다.
 반드시 통과:
 
 - `node --test test/installer.test.mjs`
-- `node bin/spec-pack.mjs install --host codex --scope local --dry-run`
-- `node bin/spec-pack.mjs install --host claude --scope local --dry-run`
+- `node bin/make-product-spec.mjs install --host codex --scope local --dry-run`
+- `node bin/make-product-spec.mjs install --host claude --scope local --dry-run`
 - `npm pack --dry-run`
 
 추가 조건:
@@ -155,7 +158,7 @@ stable 승급 기준:
 
 반드시 통과:
 
-- `spec-pack/`은 canonical source로만 설명됨
+- `product-spec/`은 canonical source로만 설명됨
 - internal bundles, loop logs, review docs는 shipped surface에서 제외
 - worked examples는 optional 공개 surface로만 유지
 

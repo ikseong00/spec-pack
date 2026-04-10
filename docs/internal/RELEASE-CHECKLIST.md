@@ -2,7 +2,7 @@
 
 이 문서는 `이번 release에 무엇을 포함할지 모르겠을 때` 바로 따라 쓰는 실행용 체크리스트다.
 
-원칙과 버전 정책은 [RELEASE-STRATEGY.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-STRATEGY.md)를 따르고, 이 문서는 매 release cycle마다 scope를 정하고 실행하는 순서만 다룬다.
+원칙과 버전 정책은 [RELEASE-STRATEGY.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-STRATEGY.md)를 따르고, 이 문서는 매 release cycle마다 scope를 정하고 실행하는 순서만 다룬다.
 
 ## 1. 이번 Release Scope 결정
 
@@ -15,7 +15,7 @@
 - changed surface:
   - `CLI`, `install layout`, `shared docs`, `skills`, `agents`, `packaging` 중 어디가 바뀌는가
 - pack impact:
-  - `default spec-pack`, `planning compatibility`, 둘 다, 혹은 내부-only인지
+  - `default product-spec`, `planning compatibility`, 둘 다, 혹은 내부-only인지
 - risk level:
   - `low`, `medium`, `high`
 - target channel:
@@ -74,13 +74,13 @@ release 전에 아래를 반드시 확인한다.
 ### Packaging Integrity
 
 - `node --test test/installer.test.mjs`
-- `node bin/spec-pack.mjs install --host codex --scope local --dry-run`
-- `node bin/spec-pack.mjs install --host claude --scope local --dry-run`
+- `node bin/make-product-spec.mjs install --host codex --scope local --dry-run`
+- `node bin/make-product-spec.mjs install --host claude --scope local --dry-run`
 - `npm pack --dry-run`
 
 ### Surface Clarity
 
-- `README.md`, `INSTALL.md`, `spec-pack/SHIPPING-SURFACE.md`, `spec-pack/PACK-REGISTRY.md`가 같은 설명을 하는가
+- `README.md`, `INSTALL.md`, `product-spec/SHIPPING-SURFACE.md`, `product-spec/PACK-REGISTRY.md`가 같은 설명을 하는가
 - current default pack이 문서와 실제 동작이 일치하는가
 - host/scope/local/global 설명이 일치하는가
 
@@ -88,7 +88,7 @@ release 전에 아래를 반드시 확인한다.
 
 - internal-only artifact가 shipping default에 섞이지 않았는가
 - worked example이 있더라도 shipping default에 들어가지 않는가
-- `spec-pack/`이 내부 source임이 계속 유지되는가
+- `product-spec/`이 내부 source임이 계속 유지되는가
 
 ### Content Quality
 

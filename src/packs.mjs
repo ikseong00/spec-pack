@@ -5,26 +5,26 @@ import { ROOT_DIR } from './config.mjs';
 const PACK_REGISTRY = {
   planning: {
     id: 'planning',
-    sourceDir: path.join(ROOT_DIR, 'spec-pack', 'planning'),
+    sourceDir: path.join(ROOT_DIR, 'product-spec', 'planning'),
     shippingStatus: 'compatibility-minimal',
     installable: true
   },
   design: {
     id: 'design',
-    sourceDir: path.join(ROOT_DIR, 'spec-pack', 'design'),
+    sourceDir: path.join(ROOT_DIR, 'product-spec', 'design'),
     shippingStatus: 'validated-internal-candidate',
     installable: false
   },
   prebuild: {
     id: 'prebuild',
-    sourceDir: path.join(ROOT_DIR, 'spec-pack', 'prebuild'),
+    sourceDir: path.join(ROOT_DIR, 'product-spec', 'prebuild'),
     shippingStatus: 'shipped',
     installable: true,
     manifestFile: 'export-manifest.candidate.json'
   },
   architecture: {
     id: 'architecture',
-    sourceDir: path.join(ROOT_DIR, 'spec-pack', 'architecture'),
+    sourceDir: path.join(ROOT_DIR, 'product-spec', 'architecture'),
     shippingStatus: 'validated-internal-candidate',
     installable: false
   }

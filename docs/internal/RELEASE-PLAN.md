@@ -2,14 +2,14 @@
 
 이 문서는 우리 팀 기준으로 `무엇이 작업용 원본이고`, `무엇이 실제 배포물인지`를 고정하는 내부 문서다.
 
-세부 버전 정책, candidate/stable 승급 기준, tag/npm/GitHub release 순서는 [RELEASE-STRATEGY.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-STRATEGY.md)를 따른다.
-매 release마다 실제 scope를 정하고 실행할 때는 [RELEASE-CHECKLIST.md](/Users/ikseong/Desktop/develop/vibecoding/bbang/docs/internal/RELEASE-CHECKLIST.md)를 사용한다.
+세부 버전 정책, candidate/stable 승급 기준, tag/npm/GitHub release 순서는 [RELEASE-STRATEGY.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-STRATEGY.md)를 따른다.
+매 release마다 실제 scope를 정하고 실행할 때는 [RELEASE-CHECKLIST.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-CHECKLIST.md)를 사용한다.
 
 ## 1. 핵심 결정
 
-- `spec-pack/`은 internal authoring workspace다
-- end user에게 직접 노출되는 최종 산출물은 `spec-pack` 설치 CLI와 설치 결과물이다
-- 현재 실제 installer 배포 범위는 `spec-pack` default surface와 `planning` compatibility path다
+- `product-spec/`은 internal authoring workspace다
+- end user에게 직접 노출되는 최종 산출물은 `make-product-spec` CLI와 설치 결과물이다
+- 현재 실제 installer 배포 범위는 `product-spec` default surface와 `planning` compatibility path다
 - `기획 + 디자인 + 설계`는 validated internal prebuild surface로 유지 중이다
 - `구현` 관련 skill / agent는 1차 배포 범위에서 제외한다
 
@@ -19,7 +19,7 @@
 
 아래는 우리 팀이 계속 수정하고 실험하는 source of truth다.
 
-- `spec-pack/`
+- `product-spec/`
 - `docs/template-research/`
 - loop log, review summary, validation fixture
 - worked example
@@ -32,9 +32,9 @@
 
 ### 패키지
 
-- `spec-pack` npm package
-- 실행 진입점: `spec-pack`
-- compatibility alias: `planning-pack`
+- `@ikseongjo/make-product-spec` npm package
+- 실행 진입점: `make-product-spec`
+- compatibility alias: `spec-pack`, `planning-pack`
 
 ### 설치 후 산출물
 
@@ -49,16 +49,16 @@
 
 - host-visible `skills/`
 - host-visible `agents/`
-- shared `spec-pack/` for default shipped surface
+- shared `product-spec/` for default shipped surface
   - `references/`
   - `templates/`
   - packaged `README.md`
 - compatibility minimal shared root:
   - `planning-pack/`
 
-## 4. spec-pack 의 의미
+## 4. product-spec 의 의미
 
-`spec-pack/`은 배포 그 자체가 아니다.
+`product-spec/`은 배포 그 자체가 아니다.
 
 더 정확히 말하면:
 
@@ -69,12 +69,12 @@
 주의:
 
 - 현재 npm package 안에는 installer가 읽을 source asset로 일부 포함될 수 있다
-- 하지만 그것은 `build/runtime asset` 성격이지, `spec-pack/`을 사용자에게 그대로 쓰게 한다는 뜻은 아니다
+- 하지만 그것은 `build/runtime asset` 성격이지, `product-spec/`을 사용자에게 그대로 쓰게 한다는 뜻은 아니다
 
 즉 운영 기준은 이렇다.
 
-- `spec-pack/` = 내부 원본
-- `spec-pack` CLI = 배포물
+- `product-spec/` = 내부 원본
+- `make-product-spec` CLI = 배포물
 - host root에 설치된 결과 = 사용자가 실제로 쓰는 산출물
 
 ## 5. 1차 배포 범위
@@ -110,7 +110,7 @@ validated internal candidate 범위:
 
 현재 기준 배포 단위는 이렇게 본다.
 
-1. `spec-pack`
+1. `make-product-spec`
    - 현재 실제 shipping package
 2. `core prebuild pack`
    - 기획 + 디자인 + 설계
@@ -123,7 +123,7 @@ validated internal candidate 범위:
 ## 8. 배포 전 체크리스트
 
 - 범위가 `기획/디자인/설계`로 문서에 일관되게 반영되었는가
-- `spec-pack/`과 shipped artifact의 경계가 명확한가
+- `product-spec/`과 shipped artifact의 경계가 명확한가
 - validation-only artifact가 shipping default에서 빠졌는가
 - install 문서가 별도로 있는가
 - host별 local/global install 경로가 고정됐는가
