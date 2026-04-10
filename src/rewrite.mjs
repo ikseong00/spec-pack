@@ -26,13 +26,18 @@ function applyReplacements(content, replacements) {
   return rewritten;
 }
 
+export function rewriteMarkdownContent(content, { installedName, replacements = [] } = {}) {
+  const renamed = installedName ? rewriteFrontmatterName(content, installedName) : content;
+  return applyReplacements(renamed, replacements);
+}
+
 export function rewriteSkillContent(content, { installedName, sharedDirName }) {
   const replacements = [
     ['../../references/', `../../${sharedDirName}/references/`],
     ['../../templates/', `../../${sharedDirName}/templates/`]
   ];
 
-  return applyReplacements(rewriteFrontmatterName(content, installedName), replacements);
+  return rewriteMarkdownContent(content, { installedName, replacements });
 }
 
 export function rewriteAgentContent(content, { sharedDirName }) {
@@ -41,5 +46,5 @@ export function rewriteAgentContent(content, { sharedDirName }) {
     ['../templates/', `../${sharedDirName}/templates/`]
   ];
 
-  return applyReplacements(content, replacements);
+  return rewriteMarkdownContent(content, { replacements });
 }

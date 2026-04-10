@@ -3,6 +3,7 @@ import path from 'node:path';
 import { PACKAGE_NAME } from './config.mjs';
 import { pruneEmptyAncestors, removePath } from './fs-utils.mjs';
 import { resolveLayout } from './layout.mjs';
+import { DEFAULT_PACK_ID } from './packs.mjs';
 
 function readManifest(manifestPath) {
   if (!fs.existsSync(manifestPath)) {
@@ -16,7 +17,8 @@ export function uninstallPack(options) {
   const layout = resolveLayout({
     host: options.host,
     scope: options.scope || 'local',
-    projectRoot: options.projectRoot
+    projectRoot: options.projectRoot,
+    pack: options.pack || DEFAULT_PACK_ID
   });
   const manifest = readManifest(layout.manifestPath);
 

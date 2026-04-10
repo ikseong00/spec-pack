@@ -1,0 +1,209 @@
+{
+  "manifestVersion": "2-candidate",
+  "sharedDirName": "planning-pack",
+  "defaultPrefix": "planning",
+  "packScope": "planning-only",
+  "installedCoreOutputs": [
+    "PROJECT-THESIS.md",
+    "PLANNING-RECORD.md",
+    "RESEARCH.md",
+    "PRD.md",
+    "UX-IA.md",
+    "SCREEN-SPECS.md",
+    "BUSINESS-OPS.md",
+    "EXECUTION-HANDOFF.md"
+  ],
+  "excludedByDefault": [
+    "worked-examples/",
+    "RALPH-LOOP-LOG.md",
+    "validation-only notes",
+    "loop scenario matrices",
+    "packaging-only notes"
+  ],
+  "sharedMappings": [
+    {
+      "source": "templates",
+      "target": "templates"
+    }
+  ],
+  "sharedFiles": [
+    {
+      "source": "PACKAGE-README.md",
+      "target": "README.md"
+    },
+    {
+      "source": "references/AUDIT-PROTOCOL.md",
+      "target": "references/AUDIT-PROTOCOL.md"
+    },
+    {
+      "source": "references/CANONICAL-CONCEPT-REGISTRY.md",
+      "target": "references/CANONICAL-CONCEPT-REGISTRY.md"
+    },
+    {
+      "source": "references/CONTROL-PLANE.md",
+      "target": "references/CONTROL-PLANE.md"
+    },
+    {
+      "source": "references/CORE-DOCUMENT-SET.md",
+      "target": "references/CORE-DOCUMENT-SET.md"
+    },
+    {
+      "source": "references/DEFAULT-RESOLVED-ROUTES.md",
+      "target": "references/DEFAULT-RESOLVED-ROUTES.md"
+    },
+    {
+      "source": "references/DOC-METADATA-SPEC.md",
+      "target": "references/DOC-METADATA-SPEC.md"
+    },
+    {
+      "source": "references/DOMAIN-AXES.md",
+      "target": "references/DOMAIN-AXES.md"
+    },
+    {
+      "source": "references/METRIC-HIERARCHY.md",
+      "target": "references/METRIC-HIERARCHY.md"
+    },
+    {
+      "source": "references/OPERATOR-STARTER.md",
+      "target": "references/OPERATOR-STARTER.md"
+    },
+    {
+      "source": "references/OWNER-FREEZE-BRIDGE.md",
+      "target": "references/OWNER-FREEZE-BRIDGE.md"
+    },
+    {
+      "source": "references/OWNER-FREEZE-QUICK-FILL-CARDS.md",
+      "target": "references/OWNER-FREEZE-QUICK-FILL-CARDS.md"
+    },
+    {
+      "source": "references/PLANNING-DONE-CRITERIA.md",
+      "target": "references/PLANNING-DONE-CRITERIA.md"
+    },
+    {
+      "source": "references/PLANNING-RECORD.md",
+      "target": "references/PLANNING-RECORD.md"
+    },
+    {
+      "source": "references/PLANNING-STATE-CONTRACT.md",
+      "target": "references/PLANNING-STATE-CONTRACT.md"
+    },
+    {
+      "source": "references/PROJECTION-MATRIX.md",
+      "target": "references/PROJECTION-MATRIX.md"
+    },
+    {
+      "source": "references/QUESTION-OVERLAYS.md",
+      "target": "references/QUESTION-OVERLAYS.md"
+    },
+    {
+      "source": "references/SERVICE-SPEC-AUTHORING-RULES.md",
+      "target": "references/SERVICE-SPEC-AUTHORING-RULES.md"
+    },
+    {
+      "source": "references/SKILL-AGENT-CONTRACTS.md",
+      "target": "references/SKILL-AGENT-CONTRACTS.md"
+    },
+    {
+      "source": "references/START-HERE.md",
+      "target": "references/START-HERE.md"
+    },
+    {
+      "source": "references/SYSTEM-IO-SCHEMAS.md",
+      "target": "references/SYSTEM-IO-SCHEMAS.md"
+    },
+    {
+      "source": "references/UPDATE-ENTRY-MAP.md",
+      "target": "references/UPDATE-ENTRY-MAP.md"
+    }
+  ],
+  "hostProfiles": {
+    "codex": {
+      "hostRootDirName": ".codex",
+      "sharedRootDirName": "planning-pack",
+      "skillsDirName": "skills",
+      "agentsDirName": "agents",
+      "skillPrefix": "planning",
+      "agentPrefix": "planning",
+      "hostSpecificOverlayIncluded": false,
+      "skillSources": [
+        {
+          "source": "skills",
+          "prefix": "planning",
+          "replacements": [
+            [
+              "../../references/",
+              "../../planning-pack/references/"
+            ],
+            [
+              "../../templates/",
+              "../../planning-pack/templates/"
+            ]
+          ]
+        }
+      ],
+      "agentSources": [
+        {
+          "source": "agents",
+          "prefix": "planning",
+          "exclude": [
+            "AGENTS.md"
+          ],
+          "replacements": [
+            [
+              "../references/",
+              "../planning-pack/references/"
+            ],
+            [
+              "../templates/",
+              "../planning-pack/templates/"
+            ]
+          ]
+        }
+      ]
+    },
+    "claude": {
+      "hostRootDirName": ".claude",
+      "sharedRootDirName": "planning-pack",
+      "skillsDirName": "skills",
+      "agentsDirName": "agents",
+      "skillPrefix": "planning",
+      "agentPrefix": "planning",
+      "hostSpecificOverlayIncluded": false,
+      "skillSources": [
+        {
+          "source": "skills",
+          "prefix": "planning",
+          "replacements": [
+            [
+              "../../references/",
+              "../../planning-pack/references/"
+            ],
+            [
+              "../../templates/",
+              "../../planning-pack/templates/"
+            ]
+          ]
+        }
+      ],
+      "agentSources": [
+        {
+          "source": "agents",
+          "prefix": "planning",
+          "exclude": [
+            "AGENTS.md"
+          ],
+          "replacements": [
+            [
+              "../references/",
+              "../planning-pack/references/"
+            ],
+            [
+              "../templates/",
+              "../planning-pack/templates/"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

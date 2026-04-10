@@ -9,14 +9,16 @@ function printHelp() {
       `${PACKAGE_NAME} v${PACKAGE_VERSION}`,
       '',
       'Usage:',
-      '  planning-pack install --host <codex|claude> --scope <local|global> [--project-root <path>] [--prefix <name>] [--force] [--dry-run]',
-      '  planning-pack uninstall --host <codex|claude> --scope <local|global> [--project-root <path>] [--dry-run]',
-      '  planning-pack doctor --host <codex|claude> --scope <local|global> [--project-root <path>]',
+      '  spec-pack install --host <codex|claude> --scope <local|global> [--pack <prebuild|planning>] [--project-root <path>] [--prefix <name>] [--force] [--dry-run]',
+      '  spec-pack uninstall --host <codex|claude> --scope <local|global> [--pack <prebuild|planning>] [--project-root <path>] [--dry-run]',
+      '  spec-pack doctor --host <codex|claude> --scope <local|global> [--pack <prebuild|planning>] [--project-root <path>]',
       '',
       'Notes:',
       '  --scope defaults to local',
       '  --project-root defaults to the current working directory',
-      '  --prefix defaults to "planning"'
+      '  --pack defaults to "prebuild"',
+      '  --prefix defaults to the selected pack default prefix',
+      '  compatibility alias: planning-pack'
     ].join('\n')
   );
 }

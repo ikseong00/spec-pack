@@ -1,9 +1,11 @@
 import os from 'node:os';
 import path from 'node:path';
-import { EXPORT_MANIFEST, getHostConfig } from './config.mjs';
+import { getHostConfig } from './config.mjs';
+import { DEFAULT_PACK_ID, getPackConfig } from './packs.mjs';
 
-export function resolveLayout({ host, scope, projectRoot }) {
+export function resolveLayout({ host, scope, projectRoot, pack }) {
   const hostConfig = getHostConfig(host);
+  const packConfig = getPackConfig(pack || DEFAULT_PACK_ID);
   const resolvedProjectRoot = path.resolve(projectRoot || process.cwd());
   const homeRoot = os.homedir();
 
@@ -14,12 +16,17 @@ export function resolveLayout({ host, scope, projectRoot }) {
 
   return {
     host,
+    pack: packConfig.id,
     scope,
     projectRoot: resolvedProjectRoot,
     hostRoot,
-    sharedRoot: path.join(hostRoot, EXPORT_MANIFEST.sharedDirName),
+    sharedRoot: path.join(hostRoot, packConfig.exportManifest.sharedDirName),
     skillsRoot: path.join(hostRoot, hostConfig.skillsDirName),
     agentsRoot: path.join(hostRoot, hostConfig.agentsDirName),
-    manifestPath: path.join(hostRoot, EXPORT_MANIFEST.sharedDirName, 'install-manifest.json')
+    manifestPath: path.join(
+      hostRoot,
+      packConfig.exportManifest.sharedDirName,
+      'install-manifest.json'
+    )
   };
 }
