@@ -1,0 +1,16 @@
+.DS_Store
+
+# Local agent/workspace state
+.codex/
+.claude/
+.vendor/
+AGENTS.md
+current
+everything-claude-code/
+
+# Node/package manager artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
