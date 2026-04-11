@@ -1,6 +1,13 @@
-import { PACKAGE_NAME, PACKAGE_VERSION } from './config.mjs';
+import {
+  PACKAGE_NAME,
+  PACKAGE_VERSION,
+  SUPPORTED_HOSTS,
+  SUPPORTED_SCOPES,
+  formatSupportedValues
+} from './config.mjs';
 import { doctorPack } from './doctor.mjs';
 import { installPack } from './install.mjs';
+import { DEFAULT_PACK_ID, listInstallablePackIds } from './packs.mjs';
 import { uninstallPack } from './uninstall.mjs';
 
 function printHelp() {
@@ -16,7 +23,7 @@ function printHelp() {
       'Notes:',
       '  --scope defaults to local',
       '  --project-root defaults to the current working directory',
-      '  --pack defaults to "prebuild"',
+      `  --pack defaults to "${DEFAULT_PACK_ID}"`,
       '  --prefix defaults to the selected pack default prefix',
       '  compatibility aliases: dev-spec, spec-pack, planning-pack'
     ].join('\n')
@@ -51,9 +58,28 @@ function parseArgs(argv) {
   return { command, options };
 }
 
-function requireHost(options) {
+function assertAllowedValue(flag, value, allowedValues) {
+  if (!allowedValues.includes(value)) {
+    throw new Error(`${flag} must be one of: ${formatSupportedValues(allowedValues)}`);
+  }
+}
+
+function validateCommandOptions(command, options) {
   if (!options.host) {
-    throw new Error('--host is required and must be one of: codex, claude');
+    throw new Error(`--host is required and must be one of: ${formatSupportedValues(SUPPORTED_HOSTS)}`);
+  }
+
+  assertAllowedValue('--host', options.host, SUPPORTED_HOSTS);
+
+  const scope = options.scope || 'local';
+  assertAllowedValue('--scope', scope, SUPPORTED_SCOPES);
+
+  if (options.pack) {
+    assertAllowedValue('--pack', options.pack, listInstallablePackIds());
+  }
+
+  if (command === 'doctor' && options.force) {
+    throw new Error('--force is not supported for doctor');
   }
 }
 
@@ -71,19 +97,19 @@ export function runCli(argv) {
     const { command, options } = parseArgs(argv);
 
     if (command === 'install') {
-      requireHost(options);
+      validateCommandOptions(command, options);
       printResult(installPack(options));
       return;
     }
 
     if (command === 'uninstall') {
-      requireHost(options);
+      validateCommandOptions(command, options);
       printResult(uninstallPack(options));
       return;
     }
 
     if (command === 'doctor') {
-      requireHost(options);
+      validateCommandOptions(command, options);
       printResult(doctorPack(options));
       return;
     }

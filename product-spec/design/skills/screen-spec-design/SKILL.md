@@ -1,71 +1,71 @@
 ---
 name: screen-spec-design
-description: Upgrade SCREEN-SPECS into a usable design contract with priorities, states, and trust/status signal placement.
+description: Turn planning and flow decisions into screen-level design contracts with purpose, sections, states, and signal placement.
 ---
 
 # Screen Spec Design
 
 ## Purpose
 
-각 화면/페이지를 실제 design handoff에 쓸 수 있는 screen contract로 강화한다.
+Make each screen concrete enough that stitch, designers, and frontend can see what must be shown and what action each screen exists to support.
 
 ## Use When
 
-- 화면 목록은 있지만 우선순위와 상태가 약하다
-- stitch나 디자이너가 화면을 만들 때 기준이 부족하다
-- 핵심 CTA와 signal placement가 모호하다
+- screen definitions are still thin or inconsistent
+- must-render states and signal placement are not yet explicit
+- the team needs screen contracts before synthesis or handoff
 
 ## Inputs
 
-- existing `SCREEN-SPECS.md`
-- `UX-IA.md`
-- `DESIGN.md`
-- `PRD.md`
+- `SCREEN-SPECS.md` draft
+- current `UX-IA.md`
+- design direction and trust/state priorities
 
-## Contract
+## Operating Boundary
 
-이 skill은 [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md)를 따른다.
+This skill follows [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md).
+
+- Keep the screen contract tied to flow ownership and must-have scope.
+- Do not leave key state or signal placement implied.
+- Do not rename the same screen across documents.
+- Prefer precise screen purpose over feature-list prose.
 
 ## Core Workflow
 
-1. 핵심 화면 3-7개를 우선순위로 정리한다
-2. 각 화면의 `screen_id`, 목적, primary actor를 분명히 한다
-3. main sections, primary CTA, state, edge case를 보강한다
-4. `must-render states`, `primary decision or confirmation`, `trust or proof signals`를 적는다
-5. visual priority와 layout mode를 명시한다
-6. signal placement, freshness, audience boundary, irreversible action note를 명시한다
-7. device variant나 dense-data mode가 필요한지 표시한다
+1. Confirm the screen set and stable screen IDs.
+2. Write each screen purpose, core sections, CTA, and must-render states.
+3. Capture signal placement, role variants, blocked states, and recovery entry points.
+4. Record device notes and visual priority when they matter.
+5. Write unresolved screen contract issues explicitly.
+6. Recommend synthesis or follow-up flow work.
 
 ## Must Capture
 
 - screen purpose
-- main sections
-- primary CTA
-- states
-- edge cases
-- dependencies
-- visual priority
-- layout mode
-- device variant notes
-- required trust or status signals
-- proof or evidence surface
-- freshness or last updated rule
-- audience or visibility boundary
-- acknowledgment or irreversible action notes
-- design notes
+- sections and CTA
+- must-render states
+- signal placement
+- role variants and recovery entry
+- visual priority and device notes
+
+## Record Writes
+
+- updated `SCREEN-SPECS.md`
+- `open_questions`
+- `recommended_next_step`
 
 ## Output
 
-- updated `SCREEN-SPECS.md`
+- `screen_contract_update`
+- `must_render_state_notes`
+- `recommended_next_skill`
 
 ## Quality Bar
 
-- section list만 있고 목적/상태가 없으면 실패다
-- stitch가 이 문서를 보고 화면을 만들 수 있어야 한다
-- user trust를 좌우하는 signal이 어디 있는지 보여야 한다
-- screen name만 있고 stable `screen_id`가 없으면 handoff quality가 약하다고 본다
+- Screen contracts should be buildable by humans and generators alike.
+- If a key state or disclosure would still have to be guessed, the screen spec is not done.
 
 ## Completion
 
-- `## SKILL COMPLETE` 또는 `## SKILL BLOCKED`
-- `recommended_next_skill`: `design-synthesis`
+- `## SKILL COMPLETE` or `## SKILL BLOCKED`
+- `recommended_next_skill`: `design-synthesis` or a focused flow/visual pass

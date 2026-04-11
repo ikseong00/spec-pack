@@ -1,42 +1,53 @@
 ---
 name: claude-entry
-description: Claude-specific entry wrapper for the unified spec pack. Uses shared references as source of truth and adds host-specific entry guidance only.
+description: Claude-specific entry wrapper for the unified spec pack. Routes to shared references and the lean authoring surface without changing canonical service-spec truth.
 ---
 
 # Claude Entry
 
 ## Purpose
 
-shared spec pack을 Claude surface에서 바로 시작할 수 있게 돕는 host overlay entry다.
+Provide a light Claude-specific starting wrapper for the shared product-spec surface without changing canonical service-spec meaning.
 
 ## Use When
 
-- Claude에서 `planning -> design -> rough architecture`를 하나의 흐름으로 시작할 때
-- shared spec route는 유지하되 operator phrasing을 더 얇게 주고 싶을 때
-- shared doc ownership과 reopen rule을 빠르게 재확인하고 싶을 때
+- you want to start the full planning -> design -> rough architecture flow from Claude
+- you want a Claude-specific entry point without re-explaining the shared layer
+- you want a quick pointer to the core planning, design, and audit surfaces
 
 ## Read First
 
 1. [../../../../references/START-HERE.md](../../../../references/START-HERE.md)
 2. [../../../../references/PLANNING-TO-DESIGN-HANDOFF.md](../../../../references/PLANNING-TO-DESIGN-HANDOFF.md)
 3. [../../HOST-OVERLAY-MATRIX.md](../../HOST-OVERLAY-MATRIX.md)
+4. [../../README.md](../../README.md)
 
-## Claude Overlay Rules
+## Operating Boundary
 
-- canonical route choice는 shared `START-HERE`에서 한다
-- Claude overlay는 operator phrasing과 wrapper selection만 바꾼다
-- shared docs나 service-spec meaning을 재정의하지 않는다
-- same residual이면 wording patch보다 shared contract fix를 먼저 요구한다
+This skill follows the shared product-spec references and Claude runtime supplements.
 
-## Preferred Next Surfaces
+- Read root `AGENTS.md` and `.claude/AGENTS.md` as runtime supplements.
+- Use the shared `START-HERE` as the canonical route chooser.
+- Act as a wrapper only; do not redefine shared doc meaning.
 
-- planning synthesis:
-  - `product-spec-planning-synthesis`
-- design synthesis:
-  - `product-spec-design-synthesis`
-- final doc audit:
-  - `product-spec-design-pack-auditor`
-  - `product-spec-compliance-auditor`
+## Core Workflow
+
+1. Read the shared entry references first.
+2. Keep route choice in the shared layer.
+3. Point the operator toward the most useful next shared skill or agent.
+4. Use the Claude overlay only to simplify runtime entry.
+
+## Must Capture
+
+- selected route
+- shared docs to touch
+- recommended skills or agents
+- why the Claude overlay helped
+
+## Record Writes
+
+- `selected_route`
+- `recommended_skills_or_agents`
 
 ## Output
 
@@ -45,3 +56,12 @@ shared spec pack을 Claude surface에서 바로 시작할 수 있게 돕는 host
 - `shared_docs_to_touch`
 - `recommended_skills_or_agents`
 - `why_claude_overlay_helped`
+
+## Quality Bar
+
+- This wrapper should reduce friction without creating a second canonical workflow.
+
+## Completion
+
+- `## SKILL COMPLETE` or `## SKILL BLOCKED`
+- `recommended_next_skill`: typically `product-spec-planning-synthesis`, `product-spec-design-synthesis`, or a final audit agent

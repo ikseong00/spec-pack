@@ -23,10 +23,27 @@ export const HOST_CONFIG = {
   }
 };
 
+export const SUPPORTED_HOSTS = Object.freeze(Object.keys(HOST_CONFIG));
+export const SUPPORTED_SCOPES = Object.freeze(['local', 'global']);
+
+export function formatSupportedValues(values) {
+  return values.join(', ');
+}
+
+export function assertSupportedScope(scope) {
+  if (!SUPPORTED_SCOPES.includes(scope)) {
+    throw new Error(
+      `Unsupported scope: ${scope}. Supported scopes: ${formatSupportedValues(SUPPORTED_SCOPES)}`
+    );
+  }
+}
+
 export function getHostConfig(host) {
   const config = HOST_CONFIG[host];
   if (!config) {
-    throw new Error(`Unsupported host: ${host}`);
+    throw new Error(
+      `Unsupported host: ${host}. Supported hosts: ${formatSupportedValues(SUPPORTED_HOSTS)}`
+    );
   }
   return config;
 }

@@ -7,68 +7,70 @@ description: Merge visual direction, UX state design, and screen contracts into 
 
 ## Purpose
 
-design 결과를 reusable living document bundle로 고정한다.
+Lock design outputs into a reusable bundle that stitch, frontend, and architecture can all consume without reopening the same questions.
 
 ## Use When
 
-- design direction, flow, screen 정보가 흩어져 있다
-- stitch / frontend / architecture가 바로 쓸 bundle이 필요하다
-- design done criteria 충족 여부를 점검해야 한다
+- design direction, flow logic, and screen contracts are still scattered
+- you need a stable bundle for stitch or downstream handoff
+- you need to judge whether the design stage actually meets the done criteria
 
 ## Inputs
 
 - `DESIGN.md` draft
 - updated `UX-IA.md`
 - updated `SCREEN-SPECS.md`
-- active design constraints and open questions
+- active design constraints and unresolved questions
 
-## Contract
+## Operating Boundary
 
-이 skill은 [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md)를 따른다.
+This skill follows [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md) and [DESIGN-DONE-CRITERIA.md](../../references/DESIGN-DONE-CRITERIA.md).
+
+- Do not hide contradictions between the three core design documents.
+- Do not mark the bundle ready if stitch guidance is still vague.
+- Keep update ownership clear across documents.
+- Do not reopen locked planning facts without a real upstream conflict.
 
 ## Core Workflow
 
-1. design outputs를 한 번에 읽는다
-2. contradiction을 surfaced한다
-3. `DESIGN.md`, `UX-IA.md`, `SCREEN-SPECS.md` 책임 범위를 정리한다
-4. stitch prompt guide, screen priority, state priority가 충분한지 확인한다
-5. phase memory snapshot을 남겨 stitch / frontend / architecture가 같은 질문을 반복하지 않게 한다
-6. compliance self-check로 locked planning fact re-ask, vague generator rule, hidden blocker를 짧게 확인한다
-7. [DESIGN-DONE-CRITERIA.md](../../references/DESIGN-DONE-CRITERIA.md)를 기준으로 hard gate를 점검한다
-8. ready가 아니면 `not_ready_because`를 남긴다
-9. provisional mode와 update path가 빠지지 않았는지 확인한다
+1. Read the three core design outputs together.
+2. Surface contradictions or ownership drift.
+3. Confirm screen priority, state priority, and stitch guidance completeness.
+4. Write a short phase memory snapshot for downstream users.
+5. Run a compact compliance self-check.
+6. Leave `not_ready_because` if the hard gate is still open.
 
 ## Must Capture
 
 - final design bundle
-- unresolved questions
-- not ready reasons when applicable
 - stitch readiness notes
-- handoff notes for frontend / architecture
+- frontend and architecture handoff notes
 - update ownership notes
 - phase memory snapshot
 - compliance self-check
+
+## Record Writes
+
+- `DESIGN.md`
+- updated `UX-IA.md`
+- updated `SCREEN-SPECS.md`
+- `open_questions` and `not_ready_because` when needed
 
 ## Output
 
 - `DESIGN.md`
 - updated `UX-IA.md`
 - updated `SCREEN-SPECS.md`
-- `recommended_next_step`
 - `phase_memory_snapshot`
-- `compliance_self_check`
-- `not_ready_because` when needed
+- `recommended_next_step`
 
 ## Quality Bar
 
-- 세 문서가 서로 충돌하지 않아야 한다
-- stitch prompt guide가 추상적인 미사여구 수준이면 실패다
-- frontend / architecture가 다시 물어볼 질문이 많으면 실패다
-- 어떤 변경이 오면 어느 문서를 먼저 고칠지 모르면 synthesis가 덜 끝난 상태다
-- phase memory snapshot이 없어서 downstream consumer가 route를 다시 추측하면 실패다
-- generator-facing rule이 still vague하면 실패다
+- The three documents must agree on ownership and intent.
+- Stitch rules must be generator-facing, not poetic.
+- Downstream teams should know what to update first when change requests arrive.
 
 ## Completion
 
-- `## SKILL COMPLETE` 또는 `## SKILL BLOCKED`
-- `recommended_next_skill`: `design-pack-auditor` or next stage
+- `## SKILL COMPLETE` or `## SKILL BLOCKED`
+- `recommended_next_skill`: `design-pack-auditor` or the next stage handoff

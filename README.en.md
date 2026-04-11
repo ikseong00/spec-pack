@@ -4,35 +4,49 @@
 - 한국어: [README.md](README.md)
 - Install guide: [INSTALL.en.md](INSTALL.en.md) · [INSTALL.md](INSTALL.md)
 
-`make-product-spec` is a host-aware installer CLI that turns product ideas into developer-facing product specs. After installation, it lays down a curated authoring surface under `.codex/product-spec` or `.claude/product-spec` with planning, design, and rough architecture guidance.
+`make-product-spec` is a CLI that turns rough product ideas into product documents developers can build from.
 
-The canonical authoring source in this repository lives under [product-spec/](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec). Release boundaries are documented in [RELEASE-PLAN.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-PLAN.md). The shipped surface is defined in [SHIPPING-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/SHIPPING-SURFACE.md), host-aware install behavior in [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/HOST-AWARE-INSTALL-SURFACE.md), and pack status in [PACK-REGISTRY.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/PACK-REGISTRY.md).
+## Who This Is For
 
-## Quick Start
+- teams that want to close product decisions before implementation
+- teams that want the same product-spec surface in Claude and Codex
+- teams that want PRD, UX-IA, screen spec, design, and rough architecture docs in one flow
+
+## Install
 
 ```bash
 npm install -g @ikseongjo/make-product-spec
+```
+
+```bash
 make-product-spec install --host codex --scope local
+```
+
+```bash
 make-product-spec install --host claude --scope local
 ```
 
-## What It Installs
+Preview only:
 
-- Default shipped pack: `prebuild`
-- Shared install root: `product-spec/`
-- Installed prefixes:
-  - `product-spec-*` for the unified prebuild surface
-  - `planning-*` for the planning compatibility path
-- Supported hosts:
-  - `codex`
-  - `claude`
-- Supported scopes:
-  - `local`
-  - `global`
+```bash
+make-product-spec install --host codex --scope local --dry-run
+```
 
-## What Users Get
+## What Gets Created
 
-The default `prebuild` surface is designed to produce these output documents:
+The default install uses the `prebuild` pack. After install, one of these roots is created.
+
+- Codex: `.codex/product-spec/`
+- Claude: `.claude/product-spec/`
+
+Installed surface:
+
+- curated `references/`
+- `templates/`
+- host-visible `skills/`
+- host-visible `agents/`
+
+The default surface is meant to produce this document set.
 
 - `PROJECT-THESIS.md`
 - `PLANNING-RECORD.md`
@@ -49,22 +63,50 @@ The default `prebuild` surface is designed to produce these output documents:
 - `INTEGRATIONS.md`
 - `NON-FUNCTIONAL.md`
 
-## Notes
+## Pack Difference
 
-- The public CLI and npm package name is `make-product-spec`.
-- The installed shared root is always named `product-spec`.
-- Compatibility aliases remain available: `dev-spec`, `spec-pack`, and `planning-pack`.
-- The shipped package excludes loop logs, scenario matrices, internal fixtures, and internal review artifacts.
-- `planning` remains available as a smaller compatibility path. `design` and `architecture` are currently included inside the default `prebuild` surface.
+- `prebuild`
+  - default
+  - unified surface for planning, design, and rough architecture
+- `planning`
+  - smaller compatibility path
+  - use only when you want a planning-only surface
 
-## Codex Workspace Surface
+Example:
 
-When you open this repository itself as a Codex workspace, use these project-local entry points:
+```bash
+make-product-spec install --host codex --scope local --pack planning
+```
 
-- root [AGENTS.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/AGENTS.md)
-- Codex supplement [.codex/AGENTS.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/AGENTS.md)
-- project config [.codex/config.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/config.toml)
-- sample Codex roles:
-  - [.codex/agents/explorer.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/explorer.toml)
-  - [.codex/agents/reviewer.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/reviewer.toml)
-  - [.codex/agents/docs-researcher.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/docs-researcher.toml)
+## Supported Values
+
+- `--host`: `codex`, `claude`
+- `--scope`: `local`, `global`
+- `--pack`: `prebuild`, `planning`
+
+The CLI now fails fast on invalid values.
+
+## What It Does Not Ship
+
+These internal validation artifacts are excluded from installs.
+
+- loop logs
+- scenario matrices
+- internal fixtures
+- worked examples
+- internal review artifacts
+
+## Docs
+
+- install details: [INSTALL.en.md](INSTALL.en.md)
+- shipped surface: [product-spec/SHIPPING-SURFACE.md](product-spec/SHIPPING-SURFACE.md)
+- host-aware install rules: [product-spec/HOST-AWARE-INSTALL-SURFACE.md](product-spec/HOST-AWARE-INSTALL-SURFACE.md)
+- pack registry: [product-spec/PACK-REGISTRY.md](product-spec/PACK-REGISTRY.md)
+
+## Repo Workspace Surface
+
+When you open this repository itself as a Codex workspace, use these local entry points.
+
+- root [AGENTS.md](AGENTS.md)
+- Codex supplement [.codex/AGENTS.md](.codex/AGENTS.md)
+- project config [.codex/config.toml](.codex/config.toml)

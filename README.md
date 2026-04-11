@@ -4,51 +4,109 @@
 - English: [README.en.md](README.en.md)
 - Install guide: [INSTALL.md](INSTALL.md) · [INSTALL.en.md](INSTALL.en.md)
 
-`make-product-spec`은 아이디어를 개발자가 구현 판단할 수 있는 수준의 문서로 만들기 위한 host-aware installer CLI다. 설치하면 `.codex/product-spec` 또는 `.claude/product-spec` 아래에 planning, design, rough architecture authoring surface가 정리된다.
+`make-product-spec`은 아이디어를 개발자가 구현 판단할 수 있는 수준의 제품 문서로 정리해 주는 CLI입니다.
 
-내부 canonical source는 [product-spec/](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec) 아래에 있고, 배포 기준은 [RELEASE-PLAN.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/docs/internal/RELEASE-PLAN.md)에 정리했다. 실제 shipping boundary는 [SHIPPING-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/SHIPPING-SURFACE.md), host-aware install 규칙은 [HOST-AWARE-INSTALL-SURFACE.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/HOST-AWARE-INSTALL-SURFACE.md), pack 상태는 [PACK-REGISTRY.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/product-spec/PACK-REGISTRY.md)에 있다.
+## Who This Is For
 
-설치 방법은 [INSTALL.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/INSTALL.md)를 본다.
+- 개발 전에 기획 문서를 제대로 닫고 싶은 팀
+- Claude 또는 Codex에서 같은 product spec surface를 쓰고 싶은 팀
+- PRD, UX-IA, screen spec, design, rough architecture 문서를 한 번에 정리하고 싶은 팀
 
-## Quick Start
+## Install
 
 ```bash
 npm install -g @ikseongjo/make-product-spec
+```
+
+```bash
 make-product-spec install --host codex --scope local
+```
+
+```bash
 make-product-spec install --host claude --scope local
 ```
 
-## What Users Get
+먼저 미리 보기만 하려면:
 
-- 기본 shipped pack: `prebuild`
-- 설치 루트: `product-spec/`
-- 설치 prefix:
-  - `product-spec-*` for unified prebuild surface
-  - `planning-*` for planning compatibility path
-- scope:
-  - `local`
-  - `global`
-- host:
-  - `codex`
-  - `claude`
+```bash
+make-product-spec install --host codex --scope local --dry-run
+```
 
-## Notes
+## What Gets Created
 
-- 공개 CLI와 npm package 이름은 `make-product-spec`이다.
-- 설치 후 공유 문서 루트 이름은 항상 `product-spec`이다.
-- compatibility alias command는 `dev-spec`, `spec-pack`, `planning-pack`을 유지한다.
-- shipped pack에는 loop log, scenario matrix, internal fixture, internal review 문서가 포함되지 않는다.
-- `planning`은 compatibility minimal path로 남아 있고, `design`과 `architecture`는 현재 `prebuild`에 포함된다.
+기본 설치는 `prebuild` pack입니다. 설치 후 아래 루트가 생깁니다.
 
-## Codex Surface
+- Codex: `.codex/product-spec/`
+- Claude: `.claude/product-spec/`
 
-이 repo 자체를 Codex workspace로 열 때는 아래 project-local surface를 쓴다.
+같이 설치되는 것:
 
-- root [AGENTS.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/AGENTS.md)
-- Codex supplement [.codex/AGENTS.md](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/AGENTS.md)
-- project config [.codex/config.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/config.toml)
-- Codex sample roles:
-  - [.codex/agents/explorer.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/explorer.toml)
-  - [.codex/agents/reviewer.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/reviewer.toml)
-  - [.codex/agents/docs-researcher.toml](/Users/ikseong/Desktop/develop/vibecoding/make-product-spec/.codex/agents/docs-researcher.toml)
+- curated `references/`
+- `templates/`
+- host-visible `skills/`
+- host-visible `agents/`
 
+기본적으로 이 문서 묶음을 만들기 위한 surface입니다.
+
+- `PROJECT-THESIS.md`
+- `PLANNING-RECORD.md`
+- `RESEARCH.md`
+- `PRD.md`
+- `UX-IA.md`
+- `SCREEN-SPECS.md`
+- `BUSINESS-OPS.md`
+- `EXECUTION-HANDOFF.md`
+- `DESIGN.md`
+- `ARCHITECTURE.md`
+- `STATE-PERMISSIONS.md`
+- `DATA-MODEL.md`
+- `INTEGRATIONS.md`
+- `NON-FUNCTIONAL.md`
+
+## Pack Difference
+
+- `prebuild`
+  - 기본값
+  - planning, design, rough architecture를 묶은 unified surface
+- `planning`
+  - 더 작은 compatibility path
+  - planning-only surface가 필요할 때만 사용
+
+예:
+
+```bash
+make-product-spec install --host codex --scope local --pack planning
+```
+
+## Supported Values
+
+- `--host`: `codex`, `claude`
+- `--scope`: `local`, `global`
+- `--pack`: `prebuild`, `planning`
+
+잘못된 값을 넣으면 CLI가 즉시 에러를 냅니다.
+
+## What It Does Not Ship
+
+아래 내부 검증 산출물은 설치되지 않습니다.
+
+- loop log
+- scenario matrix
+- internal fixtures
+- worked examples
+- internal review artifacts
+
+## Docs
+
+- install details: [INSTALL.md](INSTALL.md)
+- shipped surface: [product-spec/SHIPPING-SURFACE.md](product-spec/SHIPPING-SURFACE.md)
+- host-aware install rules: [product-spec/HOST-AWARE-INSTALL-SURFACE.md](product-spec/HOST-AWARE-INSTALL-SURFACE.md)
+- pack registry: [product-spec/PACK-REGISTRY.md](product-spec/PACK-REGISTRY.md)
+
+## Repo Workspace Surface
+
+이 저장소 자체를 Codex workspace로 열 때는 아래 로컬 surface를 씁니다.
+
+- root [AGENTS.md](AGENTS.md)
+- Codex supplement [.codex/AGENTS.md](.codex/AGENTS.md)
+- project config [.codex/config.toml](.codex/config.toml)

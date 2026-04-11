@@ -292,7 +292,7 @@ test('prebuild codex local install rewrites shared, stage, and overlay links', (
   );
   assert.match(
     complianceAuditorContent,
-    /shared doc에서 owner\/source\/policy invent/
+    /invented owner\/source\/policy claims in shared docs/
   );
 });
 
@@ -396,5 +396,53 @@ test('default uninstall removes managed codex local prebuild pack', () => {
   assert.equal(
     fs.existsSync(path.join(projectRoot, '.codex', 'skills', 'product-spec-idea-discovery')),
     false
+  );
+});
+
+
+test('CLI rejects invalid host, scope, and pack values', () => {
+  assert.throws(
+    () =>
+      execFileSync(process.execPath, ['bin/make-product-spec.mjs', 'install', '--host', 'cursor'], {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+        stdio: 'pipe'
+      }),
+    /--host must be one of: codex, claude/
+  );
+
+  assert.throws(
+    () =>
+      execFileSync(process.execPath, ['bin/make-product-spec.mjs', 'install', '--host', 'codex', '--scope', 'team'], {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+        stdio: 'pipe'
+      }),
+    /--scope must be one of: local, global/
+  );
+
+  assert.throws(
+    () =>
+      execFileSync(process.execPath, ['bin/make-product-spec.mjs', 'install', '--host', 'codex', '--pack', 'architecture'], {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+        stdio: 'pipe'
+      }),
+    /--pack must be one of: planning, prebuild|--pack must be one of: prebuild, planning/
+  );
+});
+
+test('installPack rejects unsupported scope directly', () => {
+  const projectRoot = makeTempProject();
+
+  assert.throws(
+    () =>
+      installPack({
+        host: 'codex',
+        scope: 'team',
+        projectRoot,
+        dryRun: true
+      }),
+    /Unsupported scope: team/
   );
 });

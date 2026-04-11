@@ -42,6 +42,12 @@ export function listPackRegistry() {
   }));
 }
 
+export function listInstallablePackIds() {
+  return Object.values(PACK_REGISTRY)
+    .filter((pack) => pack.installable)
+    .map((pack) => pack.id);
+}
+
 export function getPackConfig(packId = DEFAULT_PACK_ID) {
   const pack = PACK_REGISTRY[packId];
   if (!pack) {

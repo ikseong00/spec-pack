@@ -1,78 +1,70 @@
 ---
 name: visual-direction-strategy
-description: Turn product context into a concrete visual direction with explicit typography, color, density, and trust posture rules.
+description: Translate the product personality, trust requirements, and use context into a coherent visual direction and design system starting point.
 ---
 
 # Visual Direction Strategy
 
 ## Purpose
 
-제품의 성격과 사용 맥락을 시각 방향으로 번역한다.
+Turn product meaning into a visual system direction that supports trust, hierarchy, and differentiation.
 
 ## Use When
 
-- product는 정리됐지만 어떤 감각으로 보여야 할지 모호하다
-- reference는 많은데 direction이 없다
-- stitch나 디자이너가 바로 읽을 visual source of truth가 필요하다
+- the product is defined but the visual direction still feels generic or vague
+- references exist but the actual direction is not yet clear
+- the team needs a stable design system starting point
 
 ## Inputs
 
-- `PROJECT-THESIS.md`
-- `PRD.md`
-- core user/market context
-- known constraints on brand, trust, and tone
-- route card from `design-intake-triage` if available
+- planning outputs and design intake summary
+- known references, constraints, and product context
+- state and trust requirements that should affect the visual system
 
-## Contract
+## Operating Boundary
 
-이 skill은 [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md)를 따른다.
+This skill follows [DESIGN-SKILL-AGENT-CONTRACTS.md](../../references/DESIGN-SKILL-AGENT-CONTRACTS.md).
+
+- Do not stop at mood-board language.
+- Tie visual direction to product meaning, trust, and usage context.
+- Closed tokens and generator rules should stay explicit.
+- Avoid generic AI design drift.
 
 ## Core Workflow
 
-1. product context와 user expectation을 읽는다
-2. mandatory discovery ladder로 `trust posture`, `tone`, `hierarchy priority`, `density target`, `must-visible signal`을 먼저 잠근다
-3. active domain stressors와 required conditional packs를 명시한다
-4. reference를 3개 이하로 압축한다
-5. visual thesis를 한 문장으로 만든다
-6. typography, color, density, depth, motion stance를 정한다
-7. proof/governance/disclosure/notification posture를 적는다
-8. closed token table 초안을 만든다
-9. AI slop risk를 explicit하게 금지한다
-10. `DESIGN.md`의 상위 절반과 generator contract를 채운다
+1. Define the visual thesis and atmosphere.
+2. Translate it into color, type, spacing, depth, motion, and component rules.
+3. Capture what should never drift or become generic.
+4. Write a stitch-friendly prompt guide and token table.
+5. Call out unresolved visual risks or missing evidence.
+6. Recommend screen or synthesis work next.
 
 ## Must Capture
 
-- product context
-- experience intent
-- inspiration references
-- visual theme and atmosphere
-- color palette and roles
-- typography rules
-- spacing / radius / layout stance
-- trust / proof / governance posture
-- closed token table draft
-- anti-slop guardrails
+- visual thesis
+- palette and typography direction
+- spacing, radius, and depth rules
+- anti-slop rules
+- stitch prompt guidance
+
+## Record Writes
+
+- `DESIGN.md`
+- `open_questions`
+- `recommended_next_step`
 
 ## Output
 
-- `DESIGN.md` draft:
-  - `Product Context`
-  - `Experience Intent`
-  - `Inspiration References`
-  - `Visual Theme & Atmosphere`
-  - `Color Palette & Roles`
-  - `Typography Rules`
-  - `Spacing, Radius, and Layout`
+- `visual_direction_summary`
+- `design_system_seed`
+- `recommended_next_skill`
 
 ## Quality Bar
 
-- reference를 그대로 베끼지 않는다
-- tone 설명이 actual visual rule로 내려와야 한다
-- color와 type는 product/trust posture와 연결돼야 한다
-- generic SaaS slop으로 쉽게 흐를 수 있는 금지사항이 있어야 한다
-- exact token or exact prohibition이 남아야 한다
+- The output should feel product-specific, not like default SaaS styling.
+- Generators should have enough rules to build from without inventing the system.
 
 ## Completion
 
-- `## SKILL COMPLETE` 또는 `## SKILL BLOCKED`
-- `recommended_next_skill`: `experience-flow-design` 또는 `screen-spec-design`
+- `## SKILL COMPLETE` or `## SKILL BLOCKED`
+- `recommended_next_skill`: `experience-flow-design`, `screen-spec-design`, or `design-synthesis`
