@@ -59,7 +59,7 @@ make-product-spec install --host codex --scope local --dry-run
 - `DESIGN.md`
 - `ARCHITECTURE.md`
 - `STATE-PERMISSIONS.md`
-- `DATA-MODEL.md`
+- `DATA-TRUTH.md`
 - `INTEGRATIONS.md`
 - `NON-FUNCTIONAL.md`
 

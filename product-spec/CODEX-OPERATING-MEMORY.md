@@ -72,7 +72,7 @@
 - current canonical outputs:
   - `ARCHITECTURE.md`
   - `STATE-PERMISSIONS.md`
-  - `DATA-MODEL.md`
+  - `DATA-TRUTH.md`
   - `INTEGRATIONS.md`
   - `NON-FUNCTIONAL.md`
 - note:

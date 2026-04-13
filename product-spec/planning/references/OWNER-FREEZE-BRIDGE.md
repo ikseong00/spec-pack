@@ -7,7 +7,7 @@
 
 - design이 policy/owner/source-of-truth를 다시 discovery하지 않게 한다
 - shared docs가 upstream ambiguity를 흡수하지 못하게 한다
-- architecture가 state/permission/data model로 바로 번역할 수 있게 한다
+- architecture가 state/permission/data truth로 바로 번역할 수 있게 한다
 
 ## Required When
 

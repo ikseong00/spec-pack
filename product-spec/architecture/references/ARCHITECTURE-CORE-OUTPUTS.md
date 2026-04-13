@@ -13,7 +13,7 @@
 
 1. `ARCHITECTURE.md`
 2. `STATE-PERMISSIONS.md`
-3. `DATA-MODEL.md`
+3. `DATA-TRUTH.md`
 4. `INTEGRATIONS.md`
 5. `NON-FUNCTIONAL.md`
 
@@ -34,7 +34,7 @@
 - irreversible action과 derived state trigger는 무엇인가
 - gate or unlock condition이 무엇인가
 
-### `DATA-MODEL.md`
+### `DATA-TRUTH.md`
 
 - source of truth는 무엇인가
 - 어떤 entity / record / derived state가 필요한가

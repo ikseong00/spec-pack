@@ -54,7 +54,7 @@
 - reason:
   - source of truth, freshness owner, duplicate rule, claim handling은 full SaaS가 아니어도 architecture read model로 번역 가능하다
 - template implication:
-  - public projection or index rule을 data model에 적을 수 있으면 검색/목록형 제품에서 더 자연스럽다
+  - public projection or index rule을 data truth 문서에 적을 수 있으면 검색/목록형 제품에서 더 자연스럽다
 
 ## Final Read
 

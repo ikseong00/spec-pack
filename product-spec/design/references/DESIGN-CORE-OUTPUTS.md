@@ -23,6 +23,20 @@ design 단계가 닫힌 뒤 architecture로 넘길 때는 [DESIGN-TO-ARCHITECTUR
 - `DESIGN.md`는 design stage에서 새로 생기는 문서다
 - `UX-IA.md`, `SCREEN-SPECS.md`는 planning stage 문서를 design 수준으로 보강한 결과물이다
 
+## Optional Mockup Preview Outputs
+
+design가 닫힌 뒤, 구현 전에 사용자나 이해관계자에게 보여줄 preview가 필요하면 optional output을 추가할 수 있다.
+
+이 단계는 core output이 아니라 projection layer다.
+
+- `MOCKUP-PREVIEW.md`
+- `preview/index.html + styles.css + app.js`
+- 또는 `mockups/` / `key-screens.pdf`
+- optional `PROTOTYPE-LINK.md`
+- optional `USER-FEEDBACK-NOTES.md`
+
+자세한 기준은 [MOCKUP-PREVIEW-OUTPUTS.md](MOCKUP-PREVIEW-OUTPUTS.md)를 따른다.
+
 ## 1. DESIGN.md
 
 이 문서는 visual / interaction system의 source of truth다.
@@ -112,6 +126,7 @@ design 단계에서 아직 하지 않는 것:
 - 픽셀 단위 final QA
 - shipped UI polish
 - framework-specific component code
+- mockup preview 자체를 canonical source로 삼는 것
 
 즉 design 단계의 목표는:
 

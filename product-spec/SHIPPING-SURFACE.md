@@ -52,7 +52,7 @@ prebuild가 만드는 의도된 최종 문서:
 - `DESIGN.md`
 - `ARCHITECTURE.md`
 - `STATE-PERMISSIONS.md`
-- `DATA-MODEL.md`
+- `DATA-TRUTH.md`
 - `INTEGRATIONS.md`
 - `NON-FUNCTIONAL.md`
 

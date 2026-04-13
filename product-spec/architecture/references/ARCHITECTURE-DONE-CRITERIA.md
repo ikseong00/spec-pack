@@ -6,7 +6,7 @@
 
 - `ARCHITECTURE.md`에 시스템 경계와 주요 흐름이 있다
 - `STATE-PERMISSIONS.md`에 must-render state와 actor split translation이 있다
-- `DATA-MODEL.md`에 source of truth와 주요 entity/derived state가 있다
+- `DATA-TRUTH.md`에 source of truth와 주요 entity/derived state가 있다
 - `INTEGRATIONS.md`에 external/manual handoff boundary가 있다
 - `NON-FUNCTIONAL.md`에 architecture-shaping requirement가 있다
 - trust-critical action의 audit/event rule이 explicit하다

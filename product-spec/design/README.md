@@ -19,6 +19,7 @@
 - `references/DEFAULT-RESOLVED-ROUTES.md`
 - `references/UPDATE-ENTRY-MAP.md`
 - `references/TRUST-OWNERSHIP-MATRIX.md`
+- `references/MOCKUP-PREVIEW-OUTPUTS.md`
 - `references/DESIGN-TO-ARCHITECTURE-HANDOFF.md`
 - `references/DESIGN-CORE-OUTPUTS.md`
 - `references/DESIGN-DONE-CRITERIA.md`
@@ -66,6 +67,15 @@ loop 준비와 평가 기준은 아래를 따른다.
 1. `DESIGN.md`
 2. design 관점으로 보강된 `UX-IA.md`
 3. design 관점으로 보강된 `SCREEN-SPECS.md`
+
+필요하면 구현 전에 optional preview 산출물을 추가할 수 있다.
+
+- `MOCKUP-PREVIEW.md`
+- `mockups/` 또는 `key-screens.pdf`
+- optional `PROTOTYPE-LINK.md`
+- optional `USER-FEEDBACK-NOTES.md`
+
+기준은 [references/MOCKUP-PREVIEW-OUTPUTS.md](references/MOCKUP-PREVIEW-OUTPUTS.md)를 따른다.
 
 그리고 다음 `architecture` 단계로 넘길 때는 [references/DESIGN-TO-ARCHITECTURE-HANDOFF.md](references/DESIGN-TO-ARCHITECTURE-HANDOFF.md)를 bridge로 쓴다.
 

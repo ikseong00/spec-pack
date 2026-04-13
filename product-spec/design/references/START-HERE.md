@@ -29,6 +29,7 @@
    - `direction`
    - `flow`
    - `screen`
+   - `preview`
    - `update`
    - `bundle-check`
 2. 제품 표면은 무엇에 가까운가
@@ -116,6 +117,9 @@
 - screen purpose/state/signal placement가 가장 비어 있음
   - start: `design-intake-triage`
   - expect: `screen-spec-design`
+- 사용자/이해관계자에게 보여줄 preview가 필요함
+  - start: `design-synthesis`
+  - then: [MOCKUP-PREVIEW-OUTPUTS.md](MOCKUP-PREVIEW-OUTPUTS.md)
 - 기존 문서를 수정해야 함
   - start: `design-intake-triage`
   - then: [UPDATE-ENTRY-MAP.md](UPDATE-ENTRY-MAP.md)

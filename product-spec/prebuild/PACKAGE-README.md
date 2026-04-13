@@ -36,7 +36,7 @@ shipped `product-spec`이 최종적으로 만드는 developer-handoff 문서는 
 9. `DESIGN.md`
 10. `ARCHITECTURE.md`
 11. `STATE-PERMISSIONS.md`
-12. `DATA-MODEL.md`
+12. `DATA-TRUTH.md`
 13. `INTEGRATIONS.md`
 14. `NON-FUNCTIONAL.md`
 

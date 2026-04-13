@@ -127,7 +127,7 @@ design 다음 architecture 코어 산출물은 아래처럼 가는 것이 자연
 
 - `ARCHITECTURE.md`
 - `STATE-PERMISSIONS.md`
-- `DATA-SOURCES.md` or `DATA-MODEL.md`
+- `DATA-SOURCES.md` or `DATA-TRUTH.md`
 - `INTEGRATIONS.md`
 - `NON-FUNCTIONAL.md`
 

@@ -1,6 +1,6 @@
 {
   "name": "@ikseongjo/make-product-spec",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create developer-facing product specs and install a host-aware product-spec authoring surface for Codex and Claude.",
   "type": "module",
   "bin": {
@@ -55,6 +55,7 @@
     "product-spec/design/references/DESIGN-DONE-CRITERIA.md",
     "product-spec/design/references/DESIGN-SKILL-AGENT-CONTRACTS.md",
     "product-spec/design/references/DESIGN-TO-ARCHITECTURE-HANDOFF.md",
+    "product-spec/design/references/MOCKUP-PREVIEW-OUTPUTS.md",
     "product-spec/design/references/START-HERE.md",
     "product-spec/design/references/TRUST-OWNERSHIP-MATRIX.md",
     "product-spec/design/references/UPDATE-ENTRY-MAP.md",

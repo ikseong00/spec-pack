@@ -15,7 +15,7 @@
     "DESIGN.md",
     "ARCHITECTURE.md",
     "STATE-PERMISSIONS.md",
-    "DATA-MODEL.md",
+    "DATA-TRUTH.md",
     "INTEGRATIONS.md",
     "NON-FUNCTIONAL.md"
   ],
@@ -171,6 +171,10 @@
     {
       "source": "../design/references/DESIGN-TO-ARCHITECTURE-HANDOFF.md",
       "target": "design/references/DESIGN-TO-ARCHITECTURE-HANDOFF.md"
+    },
+    {
+      "source": "../design/references/MOCKUP-PREVIEW-OUTPUTS.md",
+      "target": "design/references/MOCKUP-PREVIEW-OUTPUTS.md"
     },
     {
       "source": "../design/references/START-HERE.md",

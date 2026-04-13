@@ -3,7 +3,7 @@ status: draft
 owner: architecture
 last_updated: YYYY-MM-DD
 source_of_truth_for:
-  - architecture.data_model
+  - architecture.data_truth
   - architecture.source_of_truth_map
 update_when:
   - source of truth or proof model changes
@@ -13,7 +13,7 @@ change_log:
   - YYYY-MM-DD: created
 ---
 
-# DATA-MODEL
+# DATA-TRUTH
 
 ## Core Entities
 

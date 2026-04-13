@@ -30,7 +30,7 @@ test('make-product-spec CLI help is the public default and dev-spec/spec-pack/pl
     encoding: 'utf8'
   });
 
-  assert.match(primaryHelp, /@ikseongjo\/make-product-spec v0\.1\.1/);
+  assert.match(primaryHelp, /@ikseongjo\/make-product-spec v\d+\.\d+\.\d+/);
   assert.match(primaryHelp, /make-product-spec install --host <codex\|claude>/);
   assert.match(primaryHelp, /compatibility aliases: dev-spec, spec-pack, planning-pack/);
   assert.match(devSpecHelp, /make-product-spec install --host <codex\|claude>/);
